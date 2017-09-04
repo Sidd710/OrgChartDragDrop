@@ -1,0 +1,617 @@
+:root{
+  --blue:#008abf;
+  --black: #2e343c;
+  --white: #ffffff;
+  --bg-color: #f0f0f0;
+  --border-color: #cccccc;
+  --icon-color: #6c6c6c;
+  --hover-black-color: #111111;
+  --text-color: #333333;
+  --link-color: #009688;
+}
+html{
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.content{
+  margin: 15px;
+}
+.container{
+  background-color: white;
+  max-width: 100%;
+  border: 1px solid #cccccc;
+  margin: 15px;
+}
+
+/*Breadcrumbs*/
+.breadcrumb{
+  background-color: transparent;
+  vertical-align: middle;
+  margin: 0;
+}
+.breadcrumb-item{
+  font-size: 1.143rem;
+  font-weight: 600;
+}
+.breadcrumb-item.active{
+  color: var(--text-color);
+}
+.breadcrumb-item a{
+  color: var(--blue);
+}
+
+/*Datatables*/
+.dataTables_wrapper{
+  color: var(--text-color);
+}
+.dataTables_length {
+  display: inline;
+}
+.dataTables_length select {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.3571rem;
+  padding: 0.2143rem;
+  border-color: var(--border-color);
+  -webkit-appearance: menulist;
+}
+.dataTables_filter input[type="search"] {
+  border: 1px solid #cccccc;
+  padding: 0.2143rem;
+  border-radius: 0px;
+}
+.dataTables_filter {
+  display: inline;
+  float: right;
+}
+.dataTables_info {
+  display: inline;
+}
+.dataTables_paginate {
+  display: inline;
+  float: right;
+  background-color: #d8d8d8;
+  padding: 0.3571rem 0;
+  border-radius: 0.2143rem;
+}
+.dataTables_paginate a {
+  color: #5f7188;
+}
+.dataTables_paginate a:hover {
+  color: var(--white);
+  text-decoration: none;
+}
+.dataTables_paginate a .paginate_button .previous .disabled {
+  color: #555555;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: none;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: white !important;
+  border: none;
+  background: none;
+}
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing{
+  color: var(--text-color);
+}
+
+/*Menu*/
+.menu .btn{
+  color: white;
+  background-color: var(--blue);
+  border-radius: 0;
+  text-transform: capitalize;
+  margin: 0 0.7143rem 0 0;
+  width: 10.71rem;
+}
+.menu .btn-group{
+  background-color: var(--blue);
+  border-radius: 0;
+  margin: 0 0.7143rem 0 0;
+  width: 10.71rem;
+}
+.menu .btn-group button.btn{
+  color: white;
+  text-transform: capitalize;
+}
+.menu .dropdown-menu{
+  padding: 0;
+  font-size: 0.8571rem;
+  width: 10.71rem;
+}
+.menu .dropdown-menu .dropdown-item{
+  padding: 0 1rem;
+  text-transform: capitalize;
+}
+.menu .dropdown-divider{
+  margin: 0;
+}
+.menu .btn-group .btn:active,
+.open > .btn.dropdown-toggle,
+.open > .btn.dropdown-toggle:focus{
+  background-color: transparent;
+  color: white;
+}
+
+
+/*Tables*/
+th, td{
+  text-align: left;
+  text-transform: capitalize;
+}
+td .btn.btn-info{
+  margin-bottom: 0;
+  padding:  0.3571rem 0.46875rem;
+}
+
+td .material-icons{
+  font-size: 0.7857rem;
+  /*padding-right: 0.2143rem;*/
+}
+
+/*Buttons*/
+.btn.btn-sm{
+  padding: 0.2143rem 0.5714rem;
+  background-color:var(--blue);
+  color: var(--white);
+  text-transform: capitalize;
+  font-size: 0.8571rem;
+  text-align: center;
+}
+
+.btn.btn-info{
+  background-color:#008abf;
+  color: white;
+}
+
+/*Stylings for radio buttons*/
+.radio span{
+  display: block;
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+}
+.radio .circle{
+  border: 2px solid rgba(0,0,0, .54);
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+}
+
+.radio .check{
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  background-color: #009688;
+  -webkit-transform: scale3d(0, 0, 0);
+  transform: scale3d(0, 0, 0);
+}
+
+.radio input[type=radio]:checked ~ .circle,
+label.radio-inline input[type=radio]:checked ~ .circle {
+  border-color: #009688;
+}
+
+.radio input[type=radio]:checked ~ .check,
+label.radio-inline input[type=radio]:checked ~ .check {
+  -webkit-transform: scale3d(0.55, 0.55, 1);
+  transform: scale3d(0.55, 0.55, 1);
+}
+
+
+/*Wizard*/
+.wizard-divider {
+  display: inline-block;
+  height: 1px;
+  margin: 0.9rem 0;
+  width: 60%;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.wizard_label{
+  color: #cccccc;
+  font-weight: 600;
+  font-size: 16px;
+}
+.wizard_label.active{
+  color: #008abf;
+}
+
+.btn-toolbar{
+  margin: 0 auto;
+}
+.btn-toolbar > .btn,
+.btn-toolbar >.btn-group{
+  margin-left: 5px;
+}
+.btn-toolbar .btn,
+.btn-toolbar .btn-group {
+  float: none;
+}
+.btn.btn-fab, .input-group-btn .btn.btn-fab {
+  border-radius: 50%;
+  font-size: 18px;
+  height: 32px;
+  margin: auto;
+  min-width: 32px;
+  width: 32px;
+  padding: 5%;
+  overflow: hidden;
+  -webkit-box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
+  position: relative;
+  line-height: normal;
+}
+.btn.btn-modal{
+  background-color: #cccccc;
+  color: white;
+  text-align: center;
+}
+.btn.btn-modal.active{
+  background-color: #008abf;
+  color: white;
+}
+
+.btn-toolbar a:not([href]):not([tabindex]){
+  color: white;
+}
+
+.table > tbody > tr > td{
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: none;
+}
+
+/*Form Controls*/
+.form-horizontal .control-label {
+  padding-top: 7px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+
+/*-----------Login Page (login.html)-----------*/
+.login{
+  background-color: var(--white);
+  padding: 0 0 1.714rem;
+  margin: 40% auto;
+}
+.login img{
+  display: block;
+  margin: 0 auto;
+}
+.login h3{
+  text-align: center;
+  margin: 0 0 0.7143rem;
+  font-size: 2rem;
+  font-weight: 600;
+  width: 100%;
+}
+.login input[type=text], input[type=password] {
+  width: 100%;
+  padding: 0.8571rem 1.429rem;
+  margin: 0.5714rem 0;
+  display: inline-block;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+.login a{
+  padding: 0.8571rem 1.429rem;
+  margin: 0.5714rem 0;
+}
+
+.login button {
+  background-color: var(--blue);
+  width: 100%;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.8571rem 1.429rem;
+  margin: 0.8571rem 0;
+}
+.login button:hover{
+  background-color: var(--black);
+  border:none;
+}
+.login button:active,
+.login button:focus{
+  background-color: var(--black);
+  border:none;
+  outline: none;
+}
+
+/*--------------------- Stylings for the main container (main.html) ---------------------*/
+.bmd-layout-header{
+}
+.bmd-layout-header .navbar{
+  padding: 0 0.5rem;
+  background-color: var(--white);
+  margin-bottom: 0;
+}
+.bmd-layout-header .navbar .navbar-toggler{
+  border: none;
+  padding: .5rem 0;
+}
+.bmd-layout-header .navbar .material-icons{
+  color: var(--icon-color);
+  vertical-align: middle;
+  font-size: 1.286rem;
+  margin: 0 0.1875rem;
+}
+.bmd-layout-header .badge {
+  position: absolute;
+  top: 0.3125rem;
+  right: 8.571rem;
+  color: var(--white);
+}
+.bmd-layout-header .btn-group,
+.bmd-layout-header .btn-group .btn{
+  margin: 0;
+}
+.bmd-layout-header .btn-group,
+.bmd-layout-header .btn-group .btn:active,
+.bmd-layout-header .btn-group .btn:hover,
+.bmd-layout-header .btn-group .btn:active,
+.open > .btn.dropdown-toggle,
+.open > .btn.dropdown-toggle:focus{
+  background-color: transparent;
+}
+.bmd-layout-header button{
+  text-transform: capitalize;
+}
+.bmd-layout-header button:hover,
+.bmd-layout-header button:focus,
+.bmd-layout-header button:active{
+  background-color: transparent;
+}
+.bmd-layout-header .dropdown-menu{
+  padding: 0;
+  font-size: 0.8571rem;
+  min-width: 9.375rem;
+}
+.bmd-layout-header .dropdown-menu.dropdown-item{
+  padding: 0 1rem;
+}
+.bmd-layout-header .dropdown-menu .material-icons{
+  margin: 0 0.3571rem;
+}
+.bmd-layout-header .dropdown-divider{
+  margin: 0;
+}
+
+.bmd-layout-drawer {
+  background: var(--black);
+}
+.bmd-layout-drawer header {
+  background: var(--white);
+}
+.bmd-layout-drawer header div {
+  text-align: center;
+  position: relative;
+}
+.bmd-layout-drawer header div img{
+}
+.bmd-layout-drawer header div .navbar-brand,
+.bmd-layout-drawer header div .navbar-brand:hover {
+  color: var(--blue);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.bmd-layout-drawer > header .navbar-brand {
+  padding: 0;
+  font-size: 1.25rem;
+}
+.bmd-layout-drawer .list-group {
+  padding-top: 0;
+}
+.bmd-layout-drawer .list-group .list-group-item {
+  padding-right: 2.857rem;
+  padding-left: 2.857rem;
+  font-size: 0.8571rem;
+  font-weight: 500;
+  color: var(--white);
+}
+.bmd-layout-drawer .list-group .list-group-item:hover {
+  background-color: var(--hover-black-color);
+  color: var(--white);
+}
+.bmd-layout-drawer > .list-group .list-group-item.active,
+.bmd-layout-drawer > .list-group .list-group-item.active:focus,
+.bmd-layout-drawer > .list-group .list-group-item.active:hover {
+  z-index: 2;
+  color: var(--blue);
+  background-color: var(--hover-black-color);
+}
+.bmd-layout-drawer > .list-group .list-group-item .active .material-icons {
+  color: var(--blue);
+}
+
+.bs-component{
+  display: inline-block;
+}
+
+/*--------------------- Stylings for the loading (loading.html) ---------------------*/
+.overlay{
+  opacity:0.8;
+  background-color: var(--black);
+  position:fixed;
+  width:100%;
+  height:95%;
+  top:5%;
+  left:0px;
+  z-index:10000;
+}
+.loader {
+  border: 8px solid var(--bg-color); /* Light grey */
+  border-top: 8px solid var(--blue); /* Blue */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+  z-index: 10000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*--------------------- Stylings for the dashboard (dashboard.html) ---------------------*/
+.panel-body.info .material-icons{
+  color: var(--blue);
+  font-size: 48px;
+}
+
+@media screen and (max-height: 1024px){
+  .dashboard{
+    height: 720px;
+  }
+}
+
+@media screen and (max-height: 900px){
+  .dashboard{
+    height: 480px;
+  }
+}
+
+/*--------------------- Stylings for the about (about.html) ---------------------*/
+.contact p{
+  margin: 0;
+  padding: 0;
+}
+.panel-body.contact .material-icons{
+  color: var(--icon-color);
+  font-size: 1.143rem;
+  vertical-align: middle;
+  margin: 0 0.1875rem;
+}
+.contact ul{
+  margin: 0;
+  padding: 0;
+}
+.contact li{
+  list-style: none;
+  align-items: center;
+}
+
+/*--------------------- Stylings for the add water point ---------------------*/
+.heading{
+  color: #9c9c9c;
+  text-transform: uppercase;
+  font-size: 105%;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/*--------------------- Stylings for the map view container (main.html) ---------------------*/
+.angular-google-map-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+/*--------------------- Stylings for the water point container (main.html) ---------------------*/
+.bar{
+  position: absolute;
+  left: 2%;
+  height: 100%;
+  z-index: 1000;
+  background-color: var(--bg-color);
+}
+
+.btn-cs .row{
+  margin: 0 auto;
+}
+.btn-cs p{
+  font-size: 12px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.facts .material-icons{
+  font-size: 1.25rem;
+}
+
+
+.x{
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  top:0;
+  background-color: var(--blue);
+}
+
+.map-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+/*--------------------- Begin orgchart Styles ---------------------*/
+.orgchart{
+  background-image:none;
+  padding:20px 9em;
+  } .node .content {
+  margin:0;
+  }
+  .chart-mesh{
+  text-align:center;
+  }
+
+  .orgchart .node .title {
+      word-wrap: break-word;
+      height: 43px;
+      white-space: pre-line;
+      background-color: var(--blue);
+  }
+
+  .orgchart tr.lines td.leftLine {
+      border-left: 1px solid var(--blue);
+      }
+
+
+  .orgchart .node .content {
+      border: 1px solid var(--blue);
+      white-space:pre;
+      line-height:16px;
+      height: 80px;
+      text-align: left;
+      padding: 5px 15px 5px 15px;
+      }
+
+  .orgchart tr.lines td.topLine {
+      border-top: 2px solid var(--blue);
+  }
+
+  .orgchart tr.lines .downLine {
+      background-color: var(--blue);
+  }
+
+
+  .orgchart tr.lines td.rightLine {
+      border-right: 1px solid var(--blue);
+  }
+
+  .orgchart .node {
+  width: 220px;
+  }
+
+  /*--------------------- End orgchart Styles ---------------------*/

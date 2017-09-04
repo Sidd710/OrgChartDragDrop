@@ -1,0 +1,111 @@
+<div class="row" style="margin: 1rem 0;">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend>Co-ordinates</legend>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="lat">Latitude</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="lat" name="name" type="text" placeholder="e.g. 0.23452" class="form-control input-md" required=""
+                   ng-model="waterpoint.lat">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="lng">Longitude</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="lng" name="name" type="text" placeholder="e.g. 36.89074" class="form-control input-md" required=""
+                   ng-model="waterpoint.lon">
+          </div>
+        </div>
+
+        <legend>Administrative Information</legend>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="county">County</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select id="county" name="County" class="form-control" ng-model="waterpoint.county"
+                    ng-options="county.county_name as county.county_name for county in geography" ng-change="getSubCounties(waterpoint.county)">
+              <option value="">Select county</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="sub">Sub-County</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select id="sub" name="Sub-County" class="form-control" ng-model="waterpoint.subcounty"
+                    ng-options="sub_county.sub_county_name as sub_county.sub_county_name for sub_county in subCounties" ng-change="getWards(waterpoint.subcounty)">
+              <option value="">Select sub-county</option>
+            </select>
+          </div>
+        </div>
+        <!--<div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="landmark">Constituency</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select id="constituency" name="Type of water point" class="form-control" ng-model="waterpoint.constituency"
+                    ng-options="constituency.constituency_name as constituency.constituency_name for constituency in constituencies">
+              <option value="">Select constituency</option>
+            </select>
+          </div>
+        </div>-->
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="wards">Wards</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select id="wards" name="Wards" class="form-control" ng-model="waterpoint.ward"
+                    ng-options="ward.name as ward.name for ward in wards">
+              <option value="">Select ward</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="town">Town</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="town" name="Town" type="text" placeholder="e.g. Town" class="form-control input-md" required=""
+                   ng-model="waterpoint.town">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Area</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 radio radio-primary">
+            <label class="radio-inline" for="rural">
+              <input type="radio" name="rural" id="rural" value="rural">
+              <span class="circle"></span>
+              <span class="check"></span>
+              Rural
+            </label>
+            <label class="radio-inline" for="urban">
+              <input type="radio" name="urban" id="urban" value="urban">
+              <span class="circle"></span>
+              <span class="check"></span>
+              Urban
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="landmark">Landmark</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="landmark" name="Landmark" type="text" placeholder="e.g. Mbalambala" class="form-control input-md" required=""
+                   ng-model="landmark.landmark">
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <button type="button" class="btn btn-info pull-left"
+            ng-click="back()">Back</button>
+    <button type="button" class="btn btn-info pull-right"
+            ng-click="next()">Next</button>
+  </div>
+</div>
+

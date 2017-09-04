@@ -1,0 +1,220 @@
+<div ng-controller="GovernanceCtrl" ng-init="initGovernance()">
+  <div ng-if="isLoading" data-ng-include="loading()">
+  </div>
+  <div class="content">
+    <div class="row menu">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="bs-component">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Governance Structure:  {{selectedCountyName != undefined? selectedCountyName: 'County'}}</li>
+          </ol>
+        </div>
+        <div class="pull-right">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle" type="button" id="buttonMenu2" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+              {{selectedCountyName != undefined? selectedCountyName: 'County'}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="buttonMenu2">
+              <a class="dropdown-item" ng-repeat="county in counties" ng-value="county.id" ng-click="initGovernance(county.name)">{{county.name}}</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel">
+          <div class="panel-body chart-mesh">
+
+            <div id="chart-container"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="panel">
+          <div class="panel-body">
+            <button class="btn btn-info" ng-click="addPopup()"><span class="glyphicon glyphicon-plus"></span> <span>Create new Position</span></button>
+            <table datatable="ng" dt-options="dtOptions" class="table table-striped table-hover">
+              <thead>
+              <tr>
+                <th>Position</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>County</County></th>
+                <th>Reports to</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="row in officersData">
+                <td>{{row.position.name | limitTo: 50}}{{myString.length > 30 ? '...' : ''}}</td>
+                <td>{{row.phone}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.county.name}}</td>
+                <td>{{row.manager.position.name}}</td>
+                <!-- <td>
+                  <button class="btn btn-info" ng-click="view(row.data)"><i class="material-icons">visibility</i></button>
+                </td> -->
+                <td>
+                  <button class="btn btn-info" ng-click="edit(row)"><i class="material-icons">edit</i></button>
+                  <button class="btn btn-info" ng-click="delete(row)"><i class="material-icons">delete</i></button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div>
+    <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <form name="addForm" role="form" novalidate="" ng-submit="vm.save()" class="ng-pristine ng-valid">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">×</button>
+              <h4 class="modal-title" id="myOfficerLabel">Add Position</h4></div>
+            <div class="modal-body" style=" overflow-y: auto;max-height: calc(100vh - 210px);">
+              <div class="form-group" aria-hidden="false">
+
+                <div class="form-group">
+                  <label class="control-label" for="field_position">Position</label>
+                  <input type="text" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" name="position" id="field_position" ng-model="officer.position" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="field_responsibilities">Responsibilities</label>
+                  <textarea  col="4" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="responsibilities" id="field_responsibilities" ng-model="officer.responsibilities" aria-invalid="false"> </textarea>
+                </div>
+                <div class="form-group"><label class="control-label" for="field_firstName">First Name</label>
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="firstName" id="field_firstName" ng-model="officer.firstname" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="field_lastName">Last Name</label>
+                  <input type="text" class="form-control ng -pristine ng-untouched ng-valid ng-not-empty" name="lastName" id="field_lastName" ng-model="officer.lastname" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="field_email">Email</label>
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="email" id="field_email" ng-model="officer.email" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="field_phoneNumber">Phone Number</label>
+                  <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="phoneNumber" id="field_phoneNumber" ng-model="officer.phone" aria-invalid="false">
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="field_county">County</label>
+
+                  <select class="form-control ng-pristine ng-valid ng-empty ng-touched" id="field_county" name="county" ng-model="officer.county"
+                          ng-options="county as county.name for county in counties track by county.id" aria-invalid="false">
+
+                  </select>
+
+                </div>
+                <div class="form-group">
+                  <label class="control-label" for="field_editor">Editor</label>
+                  <input disabled type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="editor" id="field_editor" ng-model="officer.editor" aria-invalid="false">
+                </div>
+                <div class="form-group"><label for="field_manager">Reports to</label>
+                  <select class="form-control ng-pristine ng-valid ng-empty ng-touched" id="field_manager" name="manager" ng-model="officer.manager"
+                          ng-options="officer as officer.position.name for officer in officersDataForDropDown track by officer.id" aria-invalid="false">
+                    <option value="" selected="selected"></option>
+                    <option label="201" value="201">201</option>
+                    <option label="231" value="231">231</option>
+                    <option label="241" value="241">241</option></select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                  <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" ng-click="addRecord(officer)" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span></button>
+              </div>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <form name="editForm" role="form" novalidate="" ng-submit="vm.save()" class="ng-pristine ng-valid">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">×</button>
+              <h4 class="modal-title" id="myOfficerLabel1">Edit Position</h4></div>
+            <div class="modal-body" style=" overflow-y: auto;max-height: calc(100vh - 210px);">
+              <div class="form-group" ng-show="officer.id" aria-hidden="false">
+                <label class="control-label" for="field_position">Position</label>
+                <input type="text" class="form-control ng-pristine ng-valid ng-not-empty ng-touched" name="position" id="field_position1" ng-model="officer.position.name" aria-invalid="false">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="field_responsibilities">Responsibilities</label>
+                <textarea col="4"  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty"
+                          name="responsibilities" id="field_responsibilities1" ng-model="officer.responsibilities" aria-invalid="false"> </textarea>
+              </div>
+              <div class="form-group"><label class="control-label" for="field_firstName">First Name</label>
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="firstName" id="field_firstName1" ng-model="officer.firstname" aria-invalid="false">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="field_lastName">Last Name</label>
+                <input type="text" class="form-control ng -pristine ng-untouched ng-valid ng-not-empty" name="lastName" id="field_lastName1" ng-model="officer.lastname" aria-invalid="false">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="field_email">Email</label>
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="email" id="field_email1" ng-model="officer.email" aria-invalid="false">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="field_phoneNumber">Phone Number</label>
+                <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="phoneNumber" id="field_phoneNumber1" ng-model="officer.phone" aria-invalid="false">
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="field_county">County</label>
+                <!--<input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="county" id="field_county" ng-model="officer.county.name" aria-invalid="false">-->
+                <select class="form-control ng-pristine ng-valid ng-empty ng-touched" id="field_county1" name="county" ng-model="officer.county"
+                        ng-options="county as county.name for county in counties track by county.id" aria-invalid="false">
+
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="control-label" for="field_editor">Editor</label>
+                <input disabled type="text" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" name="editor" id="field_editor1" ng-model="officer.editor.reference" aria-invalid="false">
+              </div>
+              <div class="form-group"><label for="field_manager">Reports to</label>
+
+                <select class="form-control ng-pristine ng-valid ng-empty ng-touched" id="field_manager1" name="manager"
+                        ng-model="officer.manager"
+                        ng-options="officer as officer.position.name for officer in officersDataForDropDown track by officer.id" aria-invalid="false">
+                </select>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+              </button>
+              <button type="submit" ng-click="updateRecord(officer)" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span></button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

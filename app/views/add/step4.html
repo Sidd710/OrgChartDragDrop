@@ -1,0 +1,129 @@
+<div class="row" style="margin: 1rem 0;">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <form class="form-horizontal">
+      <fieldset>
+        <legend>Cost (Kshs)</legend>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="camel">Camel</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="camel" name="Camel" type="text" placeholder="e.g. 15" class="form-control input-md" required=""
+                   ng-model="cost.dailycostpercamel">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="cow">Cow</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="cow" name="Cow" type="text" placeholder="e.g. 10" class="form-control input-md" required=""
+                   ng-model="cost.dailycostpercow">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="goat">Goat</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="goat" name="goat" type="text" placeholder="e.g. 5" class="form-control input-md" required=""
+                   ng-model="cost.dailycostpergoat">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="jerrycan">20L Jerrycan</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="jerrycan" name="20L Jerrycan" type="text" placeholder="e.g. 20" class="form-control input-md"
+                   ng-model="cost.costpertwentyltrs">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="monthly">Monthly Flat Rate</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="monthly" name="Monthly Flat Rate" type="text" placeholder="e.g. 20" class="form-control input-md"
+                   ng-model="cost.monthlyflatrate">
+          </div>
+        </div>
+
+        <legend>Payment Options</legend>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Payment Options Supported</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 radio radio-primary">
+            <label class="radio-inline" for="good">
+              <input type="radio" name="good" id="good" value="good" checked="checked">
+              <span class="circle"></span>
+              <span class="check"></span>
+              Cash
+            </label>
+            <label class="radio-inline" for="bad">
+              <input type="radio" name="bad" id="bad" value="bad">
+              <span class="circle"></span>
+              <span class="check"></span>
+              MPESA
+            </label>
+            <label class="radio-inline" for="bad">
+              <input type="radio" name="bad" id="bad" value="bad">
+              <span class="circle"></span>
+              <span class="check"></span>
+              Airtel Money
+            </label>
+          </div>
+        </div>
+
+        <legend>Management</legend>
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="owner">Owner</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="owner" name="Owner" type="text" placeholder="e.g. County Government" class="form-control input-md"
+                   ng-model="waterpoint.ownershipid">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="fundingOrg">Funding Organization</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <input id="fundingOrg" name="Funding Organization" type="text" placeholder="e.g. County Government" class="form-control input-md"
+                   ng-model="waterpoint.fundingorgid">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="servicing">Servicing Organization</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select id="servicing" name="Servicing Organization" class="form-control" ng-model="waterpoint.servicingorgid"
+                    ng-options="org.name as org.name for org in servicing">
+              <option value="">Select organization</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+          <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label" for="servicing">Responsible for Failures</label>
+          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select id="reportfailure" name="Responsible for Failures" class="form-control" ng-model="waterpoint.responsibletoreportfailure"
+                    ng-options="org.name as org.name for org in failures">
+              <option value="">Select organization</option>
+            </select>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <button type="button" class="btn btn-info pull-left"
+            ng-click="back()">Back</button>
+    <button type="button" class="btn btn-info pull-right"
+            ng-click="finish()">Finish</button>
+  </div>
+</div>
+
+
+

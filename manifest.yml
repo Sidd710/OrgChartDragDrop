@@ -1,0 +1,11 @@
+applications:
+- name: kenya-rapid
+  memory: 256M
+  instances: 1
+  host: kenya-rapid
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+
+env:
+    CF_STAGING_TIMEOUT: 15
+    CF_STARTUP_TIMEOUT: 15
+

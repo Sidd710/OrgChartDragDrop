@@ -1,0 +1,168 @@
+<div class="bmd-layout-canvas">
+  <div class="bmd-layout-container bmd-drawer-f-l bmd-drawer-in">
+    <header class="bmd-layout-header">
+      <div class="navbar navbar-light bg-faded">
+        <button id="visible" ng-click="toggleNavDrawer()" class="navbar-toggler" type="button" data-toggle="drawer"
+                data-target="#dw-s1">
+          <span class="sr-only">Toggle drawer</span>
+          <i class="material-icons">menu</i>
+        </button>
+        <div class="pull-xs-right">
+          <div class="btn-group">
+            <button class="btn dropdown-toggle" type="button" id="buttonMenu1" data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"><span><i class="material-icons">person</i></span>
+              Super Admin
+            </button>
+            <div class="dropdown-menu" aria-labelledby="buttonMenu1">
+              <a class="dropdown-item" ng-click="profile()"><i class="material-icons">person</i> Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" ng-click="logout()"><i class="material-icons">vpn_key</i> Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div id="dw-s1" class="bmd-layout-drawer bg-faded">
+      <header>
+        <div>
+          <img src="../images/logo.png">
+        </div>
+        <div>
+          <a class="navbar-brand">Kenya Rapid v1.0</a>
+        </div>
+      </header>
+      <ul class="list-group">
+        <a id="dashboard" class="list-group-item" ng-class="{active: parent === 'dashboard'}" ng-click="dashboard()"><i class="material-icons">dashboard</i>Dashboard</a>
+        <a id="map" class="list-group-item" ng-class="{active: parent === 'map'}" ng-click="map()"><i class="material-icons">map</i>Map</a>
+        <a id="governance" class="list-group-item" ng-class="{active: parent === 'governance'}" ng-click="governance()"><i class="material-icons">device_hub</i>Governance</a>
+        <a id="budget" class="list-group-item" ng-class="{active: parent === 'budget'}" ng-click="budget()"><i class="material-icons">cloud</i>Water Budget</a>
+        <a id="sweetsense" class="list-group-item" href="http://www.sweetsensors.com/sweetdata/kenyarapid" target="_blank"><i class="material-icons">link</i>SWEETSense</a>
+        <a id="acacia" class="list-group-item" href="http://kenya3r.acaciadata.com" target="_blank"><i class="material-icons">link</i>Acacia</a>
+        <a id="about" class="list-group-item" ng-class="{active: parent === 'about'}" ng-click="about()"><i class="material-icons">info</i>About</a>
+      </ul>
+    </div>
+    <main class="bmd-layout-content">
+      <div ui-view></div>
+    </main>
+  </div>
+
+</div>
+<div id="error" class="modal fade in" tabindex="-1" role="dialog" ng-controller="MainCtrl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Error</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{errors}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="exit()">Exit</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="delete" class="modal fade in" tabindex="-1" role="dialog" ng-controller="DashboardCtrl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Delete Water Point</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the water point?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="reload()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="add" class="modal fade in" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add Water Point</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row btn-toolbar">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div style="float: left; width: 100%;">
+              <a id="step1" class="btn btn-modal btn-fab active" ng-click="waterProfile()">1</a>
+              <label id="label1" class="wizard_label active" style="margin-left: 3%;" ng-click="waterProfile()">Water Profile</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div style="float: left; width: 100%;">
+              <a id="step2" class="btn btn-modal btn-fab">2</a>
+              <label id="label2" class="wizard_label" style="margin-left: 3%;">Location</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div style="float: left; width: 100%;">
+              <a id="step3" class="btn btn-modal btn-fab">3</a>
+              <label id="label3" class="wizard_label" style="margin-left: 3%;">Infrastructure</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div style="float: left; width: 100%;">
+              <a id="step4" class="btn btn-modal btn-fab">4</a>
+              <label id="label4" class="wizard_label" style="margin-left: 3%;">Management</label>
+            </div>
+          </div>
+        </div>
+        <div data-ng-include="addWaterPointSteps()"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id='selNode'> </h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="position" class="control-label">Details:</label>
+            <p id='note1'  style="white-space: pre;"> {{data.note1}}</p>
+          </div>
+          <div class="divider"></div>
+          <br>
+          <div class="form-group">
+            <label for="position" class="control-label">Contacts:</label>
+            <table style="width:100%">
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>County</th>
+              </tr>
+              <tr>
+                <td id='firstName'>{{data.firstname}} {{data.lastname}}</td>
+                <td id='phone'>{{data.phone}}</td>
+                <td id='email'>{{data.email}}</td>
+                <td id='county'>{{data.County.name}}</td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

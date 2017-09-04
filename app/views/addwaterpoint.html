@@ -1,0 +1,63 @@
+<div>
+  <div ng-if="isLoading" data-ng-include="loading()">
+  </div>
+  <div class="content">
+    <div class="row menu">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="bs-component">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="" ng-click="dashboard()">Dashboard</a></li>
+            <li class="breadcrumb-item active">{{crud}} Water Point</li>
+          </ol>
+        </div>
+        <div class="pull-right">
+          <!--<button type="button" class="btn" ng-click="addWaterPoint()">Upload File</button>-->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row btn-toolbar">
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div style="float: left; width: 100%;">
+                      <a id="step1" class="btn btn-modal btn-fab active" ng-click="waterProfile()">1</a>
+                      <label id="label1" class="wizard_label active" style="margin-left: 3%;" ng-click="waterProfile()">Water Profile</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div style="float: left; width: 100%;">
+                      <a id="step2" class="btn btn-modal btn-fab">2</a>
+                      <label id="label2" class="wizard_label" style="margin-left: 3%;">Location</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div style="float: left; width: 100%;">
+                      <a id="step3" class="btn btn-modal btn-fab">3</a>
+                      <label id="label3" class="wizard_label" style="margin-left: 3%;">Infrastructure</label>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <div style="float: left; width: 100%;">
+                      <a id="step4" class="btn btn-modal btn-fab">4</a>
+                      <label id="label4" class="wizard_label" style="margin-left: 3%;">Management</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div ui-view></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

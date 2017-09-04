@@ -1,0 +1,370 @@
+<div>
+  <div class="content">
+      <div class="row menu">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="bs-component">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#!/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item active">{{name}}</li>
+            </ol>
+          </div>
+          <div class="pull-right wp">
+            <!--<button type="button" class="btn" ng-click="addWaterPoint()">Edit</button>
+            <button type="button" class="btn" ng-click="addWaterPoint()">Delete</button>-->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-lg-3">
+        <div class="panel">
+          <div class="panel-body info">
+            <span class="icon pull-right"><i class="material-icons" style="color: #0f0f0f;">check_circle</i></span>
+            <h4>{{status}}</h4>
+            <p>Operational Status</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="panel">
+          <div class="panel-body info">
+            <span id="icon" class="pull-right"><i class="material-icons" style="color: #0f0f0f;">opacity</i></span>
+            <h4>{{capacity}}</h4>
+            <p>Capacity</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="panel">
+          <div class="panel-body info">
+            <span class="icon pull-right"><i class="material-icons">attach_money</i></span>
+            <h4>{{cost}}</h4>
+            <p>Average Water Cost</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="panel">
+          <div class="panel-body info">
+            <span class="icon pull-right"><i class="material-icons">group</i></span>
+            <h4>{{management}}</h4>
+            <p>Management</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="panel">
+              <div class="panel-heading">
+                Quick Facts
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+                  <tbody>
+                  <tr>
+                    <td align="left">
+                      Name
+                    </td>
+                    <td align="right">
+                      {{name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Type
+                    </td>
+                    <td align="right">
+                      {{type}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Water Quality
+                    </td>
+                    <td align="right">
+                      {{quantity}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Water Quantity
+                    </td>
+                    <td align="right">
+                      {{quantity}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-heading">
+                Usage
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+                  <tbody>
+                  <tr>
+                    <td align="left">
+                      Number of farms
+                    </td>
+                    <td align="right">
+                      {{farms}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Number of animals
+                    </td>
+                    <td align="right">
+                      {{animals}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Number of households
+                    </td>
+                    <td align="right">
+                      {{households}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Reliability
+                    </td>
+                    <td align="right">
+                      {{reliability}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Retrieval means
+                    </td>
+                    <td align="right">
+                      {{retrieval}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="panel">
+              <div class="panel-heading">
+                Infrastructure
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+                  <tbody>
+                  <tr>
+                    <td align="left">
+                      Meter availability
+                    </td>
+                    <td align="right">
+                      {{meterStatus}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Sensor availability
+                    </td>
+                    <td align="right">
+                      {{sensorAvailability}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Generator
+                    </td>
+                    <td align="right">
+                      {{generator}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Pump
+                    </td>
+                    <td align="right">
+                      {{pump}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-heading">
+                Sensor Reading
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+                  <tbody>
+                  <tr>
+                    <td align="left">
+                      Availability
+                    </td>
+                    <td align="right">
+                      {{sensorAvailability}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Status
+                    </td>
+                    <td align="right">
+                      {{sensorStatus}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Measurement Type
+                    </td>
+                    <td align="right">
+                      {{sensorMeasurementType}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Measurement Value
+                    </td>
+                    <td align="right">
+                      {{sensorMeasurementValue}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Operational Status
+                    </td>
+                    <td align="right">
+                      {{status}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <div class="panel">
+              <div class="panel-heading">
+                Management
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+                  <tbody>
+                  <tr>
+                    <td align="left">
+                      Management
+                    </td>
+                    <td align="right">
+                      {{management}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Ownership
+                    </td>
+                    <td align="right">
+                      {{ownership}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Servicing Organization
+                    </td>
+                    <td align="right">
+                      {{servicingOrg}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Responsible for failures
+                    </td>
+                    <td align="right">
+                      {{responsibilityToFailure}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-heading">
+                Water Cost
+              </div>
+              <div class="panel-body">
+                <table class="table table-striped" style="width: 100%;">
+                  <tbody>
+                  <tr>
+                    <td align="left">
+                      Monthly flat rate
+                    </td>
+                    <td align="right">
+                      {{costFlatRate}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      20&#8467; Jerrycan
+                    </td>
+                    <td align="right">
+                      {{cost20l}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Camel
+                    </td>
+                    <td align="right">
+                      {{costCamel}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Cow
+                    </td>
+                    <td align="right">
+                      {{costCow}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="left">
+                      Goat
+                    </td>
+                    <td align="right">
+                      {{costGoat}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="panel">
+          <div class="panel-heading">
+            Location
+            <!--<a class="pull-right">View More</a>-->
+          </div>
+          <div class="panel-body">
+            <leaflet id="waterpoint" center="center" markers="markers" height="260px"></leaflet>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-heading">
+            Community Impressions
+            <!--<a class="pull-right">View More</a>-->
+          </div>
+          <div class="panel-body">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
